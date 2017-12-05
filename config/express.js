@@ -13,12 +13,12 @@ var connection = mysql.createConnection({
 	password : '',
 	database : 'bd_b_barometro'
 });
-//connection.connect();
+connection.connect();
 
 module.exports = function(){
 	var app = express();
-	//app.set('db,connection');
-	app.set('hash,hash');
+	app.set('db', connection);
+	app.set('hash', hash);
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({extended : false}));
 	app.use(cors({credentials : true}));
