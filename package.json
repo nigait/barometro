@@ -1,0 +1,22 @@
+{
+  "name": "barometro",
+  "version": "1.0.0",
+  "description": "App for bars and attractions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bares"
+  ],
+  "author": "Nigga IT",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "crypto-toolkit": "^1.1.0",
+    "express": "^4.16.2",
+    "express-load": "^1.1.16",
+    "fcm-node": "^1.2.1",
+    "mysql": "^2.15.0"
+  }
+}
