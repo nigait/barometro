@@ -1,7 +1,7 @@
 module.exports = function(app){
 	var UsersController = {
 		listUsers : function(request,response){
-			var sql = 'SELECT * FROM `tb_usuarios` WHERE dismist = 0'; 
+			var sql = 'SELECT `nome`, `telefone`, `usuario` FROM `tb_usuarios` WHERE dismist = 0'; 
 			app.get('db').query(sql, function(err,rows){
 				if (err == null){
 					response.json(rows)
