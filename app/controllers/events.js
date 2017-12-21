@@ -12,7 +12,7 @@ module.exports = function(app) {
 		},
 		saveEvents : function(request, response){
 			var events = request.body;
-			var sql = 'INSERT INTO tb_eventos (INSERT INTO `tb_eventos`(id_estabelecimento, nome_evento, descricao, data, horario, banner, dismist) VALUES (1,"'+events.nome_evento+'","'+events.descricao+'","'+events.data+'","'+events.horario+'","'+events.banner+'",0)'
+			var sql = 'INSERT INTO tb_eventos(id_estabelecimento, nome_evento, descricao, data, horario, banner, dismist) VALUES (1,"'+events.nome_evento+'","'+events.descricao+'","'+events.data+'","'+events.horario+'","'+events.banner+'",0)'
 			app.get('db').query(sql, function(err,rows){
 				if (err == null){
 					response.json(rows)
