@@ -24,7 +24,7 @@ module.exports = function(app){
 		updateUsers : function(request,response){
 			var userId = request.params.userId;
 			var user = request.body;
-			var sql = 'UPDATE `tb_usuarios` SET `nome`="'+user.nome+'",`telefone`="'+user.telefone+'",`usuario`="'+user.usuario+'",`senha`="'+user.senha+'",`controle`="'+user.controle+'",`id_perfil`="'+user.id_perfil+'",`dismist`="'+user.dismist+'" WHERE `id_usuario` = "'+userId+'"';
+			var sql = 'UPDATE `tb_usuarios` SET `nome`="'+user.nome+'",`telefone`="'+user.telefone+'",`usuario`="'+user.usuario+'",`senha`="'+user.senha+'",`controle`="'+user.controle+'",`id_perfil`="'+user.id_perfil+'" WHERE `id_usuario` = "'+userId+'"';
 			app.get('db').query(sql, function(err,rows){
 				if (err == null){
 					response.json(rows)
