@@ -1,7 +1,7 @@
 module.exports = function(app){
 	var PerfisController = {
 		listPerfis : function(request,response){
-			var sql = 'SELECT `nome`, `telefone`, `usuario` FROM `tb_usuarios` WHERE dismist = 0'; 
+			var sql = 'SELECT `id_perfil`, `nome_perfil` FROM `tb_perfis` WHERE dismist = 0'; 
 			app.get('db').query(sql, function(err,rows){
 				if (err == null){
 					response.json(rows)
@@ -11,8 +11,8 @@ module.exports = function(app){
 			});
 		},
 		savePerfis : function(request,response){
-			var user = request.body;
-			var sql = 'INSERT INTO tb_usuarios(nome, telefone, usuario, senha, controle, id_perfil, dismist) VALUES ("'+user.nome+'", "'+user.telefone+'", "'+user.usuario+'", "'+user.senha+'", "'+user.controle+'", 3,0)';
+			var perfil = request.body;
+			var sql = 'INSERT INTO tb_perfis(nome_perfil, dismist) VALUES ("'+perfil.nome_perfil+'",0)';
 			app.get('db').query(sql, function(err,rows){
 				if (err == null){
 					response.json(rows)
@@ -22,15 +22,28 @@ module.exports = function(app){
 			});
 		},
 		updatePerfis : function(request,response){
-			
+			var perfilId = request.params.perfilId;
+			var perfil = request.body;
+			var sql = 'UPDATE `tb_perfis` SET `nome_perfil`="'+perfil.nome_perfil+'" WHERE `id_PERFIL` = "'+perfilId+'"';
+			app.get('db').query(sql, function(err,rows){
+				if (err == null){
+					response.json(rows)
+				} else {
+					response.json(err)
+				}
+			});
 		},
 		deletePerfis : function(request,response){
-			
-		},
-		login : function(request,response){
-			
+			var perfilId = request.params.perfilId;
+			var sql = 'UPDATE `tb_perfis` SET `dismist`= 1 WHERE `id_perfil` = "'+perfilId+'"';
+			app.get('db').query(sql, function(err,rows){
+				if (err == null){
+					response.json(rows)
+				} else {
+					response.json(err)
+				}
+			});
 		}
-
 	};
 	return PerfisController;
 }
